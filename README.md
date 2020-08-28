@@ -1,7 +1,7 @@
-Ethereum 2 Validator Playbook (Madalla Testnet!)
+Ethereum 2 Validator Playbook (Medalla Testnet!)
 ================================================
 
-This playbook configures a target system to run an Ethereum 2 beacon node and validator client using Lighthouse. Everything is currently setup to run on the Madalla testnet.
+This playbook configures a target system to run an Ethereum 2 beacon node and validator client using Lighthouse. Everything is currently setup to run on the Medalla testnet.
 
 I wrote this for my own use so that I can quickly re/configure a validator from scratch if need be. I'm happy to share it, and hopefully it can be of use to others in the community.
 

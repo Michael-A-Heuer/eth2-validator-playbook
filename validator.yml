@@ -9,7 +9,7 @@
 # https://medium.com/@SomerEsat/guide-to-staking-on-ethereum-2-0-ubuntu-medalla-lighthouse-c6f3c34597a8
 #
 ---
-- name: Eth2 Validator Playbook (Madalla Testnet)
+- name: Eth2 Validator Playbook (Medalla Testnet)
   hosts: all
 
   # By default this playbook uses the 'ubuntu' user, but this can be

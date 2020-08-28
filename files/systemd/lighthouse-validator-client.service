@@ -1,7 +1,8 @@
 [Unit]
 Description=Lighthouse Validator Client (ETH2)
 Wants=network-online.target
-After=network-online.target
+Requires=lighthouse-beacon-node.service
+After=network-online.target lighthouse-beacon-node.service
 
 [Service]
 Type=simple

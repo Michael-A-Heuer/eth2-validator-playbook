@@ -11,6 +11,7 @@ Group=lhvc
 UMask=0077
 Restart=always
 RestartSec=10
+SyslogIdentifier=lhvc
 ExecStart=/usr/local/bin/lighthouse vc \
     --datadir /var/lib/lhvc
 

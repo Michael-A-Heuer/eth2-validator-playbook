@@ -11,6 +11,7 @@ Group=lhbn
 UMask=0077
 Restart=always
 RestartSec=5
+SyslogIdentifier=lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
     --datadir /var/lib/lhbn \
     --testnet medalla \

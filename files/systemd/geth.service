@@ -10,6 +10,7 @@ Group=geth
 UMask=0077
 Restart=always
 RestartSec=5
+SyslogIdentifier=geth
 ExecStart=/usr/bin/geth \
     --datadir /var/lib/geth \
     --goerli \

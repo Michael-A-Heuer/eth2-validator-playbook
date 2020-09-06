@@ -14,6 +14,7 @@ SyslogIdentifier=geth
 ExecStart=/usr/bin/geth \
     --datadir /var/lib/geth \
     --datadir.ancient /chaindata/geth/ancient \
+    --metrics --pprof \
     --http \
     --goerli
 

@@ -14,12 +14,10 @@ RestartSec=5
 SyslogIdentifier=lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
     --datadir /var/lib/lhbn \
-    --testnet medalla \
+    --freezer-dir /chaindata/lighthouse_bn/freezer_db \
     --http \
     --eth1 \
-    --max-skip-slots 700 \
-    --target-peers 500
-
+    --testnet medalla
 
 [Install]
 WantedBy=multi-user.target

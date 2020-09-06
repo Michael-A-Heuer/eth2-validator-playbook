@@ -61,6 +61,11 @@
       ufw:
         state: enabled
 
+    - name: Automount the SATA HDD
+      lineinfile:
+        path: /etc/fstab
+        line: /dev/disk/by-uuid/26711d34-2cc5-4373-85d9-333bb7ed5101 /chaindata ext4 defaults 0 0
+
     #
     # Main Installation
     #

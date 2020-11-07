@@ -18,24 +18,19 @@
   args:
     creates: ~/.cargo/bin/rustc
 
-- name: Lighthouse - ensure ~/src directory
-  file:
-    path: ~/src
-    state: directory
-
 # NOTE: By default this will checkout from master. Modify this if you would like
 #       to checkout a specific branch or tag.
 - name: Lighthouse - clone repository
   git:
     repo: 'https://github.com/sigp/lighthouse'
-    dest: ~/src/lighthouse
+    dest: ~/lighthouse
     clone: yes
     update: yes
 
 - name: Lighthouse - make
   shell: . ~/.profile && make
   args:
-    chdir: ~/src/lighthouse
+    chdir: ~/lighthouse
 
 - name: Lighthouse - install system-wide
   become: yes

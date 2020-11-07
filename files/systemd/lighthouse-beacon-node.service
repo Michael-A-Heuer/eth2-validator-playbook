@@ -15,8 +15,8 @@ SyslogIdentifier=lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
     --datadir /var/lib/lhbn \
     --freezer-dir /chaindata/lighthouse_bn/freezer_db \
-    --http \
-    --eth1 \
+    --staking \
+    --metrics \
     --testnet medalla
 
 [Install]

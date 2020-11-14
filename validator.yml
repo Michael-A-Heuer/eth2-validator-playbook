@@ -54,7 +54,8 @@
       become: yes
       ufw:
         rule: allow
-        name: OpenSSH
+        port: 7409
+    #    name: OpenSSH
 
     - name: UFW - turn on
       become: yes
@@ -74,6 +75,8 @@
  
     - import_tasks: tasks/geth.yml
 
+    - import_tasks: tasks/openethereum.yml
+
     - import_tasks: tasks/metrics.yml
 
-    - import_tasks: tasks/scripts.yml
+    #- import_tasks: tasks/scripts.yml

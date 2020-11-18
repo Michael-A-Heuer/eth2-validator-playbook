@@ -19,5 +19,7 @@ ExecStart=/usr/local/bin/lighthouse bn \
     --eth1-endpoint https://goerli.infura.io/v3/XXX \
     --testnet pyrmont
 
+# remember to look up infura link on https://infura.io/
+
 [Install]
 WantedBy=multi-user.target

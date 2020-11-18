@@ -15,7 +15,7 @@
     become: yes
     copy:
       src: files/autofs/auto.automnt
-      dest: /etc/auto.automnt
+      dest: /etc/auto.automnt # remember to replace XXX with the UUID obtained via `lsblk -f`
       owner: root
       group: root
       mode: 0600

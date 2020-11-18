@@ -19,5 +19,7 @@ ExecStart=/usr/local/bin/lighthouse bn \
     --metrics \
 #    --eth1-endpoint https://mainnet.infura.io/v3/XXX
 
+# remember to look up infura link on https://infura.io/
+
 [Install]
 WantedBy=multi-user.target

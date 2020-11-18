@@ -1,0 +1,14 @@
+---
+- name: install chrony for smoother time sync
+  become: yes
+  apt:
+    name: chrony
+    state: latest
+
+- name: start and enable chrony service
+  become: yes
+  systemd:
+    name: chrony
+    state: started
+    enabled: yes
+...

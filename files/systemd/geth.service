@@ -13,10 +13,13 @@ RestartSec=5
 SyslogIdentifier=geth
 ExecStart=/usr/bin/geth \
     --datadir /var/lib/geth \
-    --datadir.ancient /chaindata/geth/ancient \
+#    --datadir.ancient /chaindata/geth/ancient \
     --metrics --pprof \
+#    --goerli \
+#    --datadir /var/lib/geth_goerli \
     --http \
-    --goerli
+#    --http.addr=192.168.XXX.XXX \
+#    --http.vhosts="*"
 
 [Install]
 WantedBy=default.target

@@ -1,8 +1,7 @@
 [Unit]
-Description=Lighthouse Beacon Node (ETH2)
+Description=Testnet Lighthouse Beacon Node (ETH2)
 Wants=network-online.target
-Requires=geth.service
-After=network-online.target geth.service
+After=network-online.target
 
 [Service]
 Type=simple
@@ -11,13 +10,14 @@ Group=lhbn
 UMask=0077
 Restart=always
 RestartSec=5
-SyslogIdentifier=lhbn
+SyslogIdentifier=testnet-lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
     --datadir /var/lib/lighthouse/chaindata \
-    --freezer-dir /chaindata/lighthouse/freezer_db \
+#    --freezer-dir /chaindata/lighthouse/freezer_db \
     --staking \
     --metrics \
-#    --eth1-endpoint https://mainnet.infura.io/v3/XXX
+    --eth1-endpoint https://goerli.infura.io/v3/XXX \
+    --testnet pyrmont
 
 [Install]
 WantedBy=multi-user.target

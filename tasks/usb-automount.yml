@@ -1,6 +1,5 @@
 ---
 - name: USB stick - install autofs package
-
   become: yes
   apt:
     pkg: autofs
@@ -11,18 +10,18 @@
     path: /etc/auto.master
     line: /automnt /etc/auto.automnt --timeout=5 --ghost
 
-  - name: USB stick - copy auto.automnt file
-    become: yes
-    copy:
-      src: files/autofs/auto.automnt
-      dest: /etc/auto.automnt # remember to replace XXX with the UUID obtained via `lsblk -f`
-      owner: root
-      group: root
-      mode: 0600
-  # To import validator_keys with lighthouse: 
-  #  sudo -u lhvc -s
-  #  cd /automnt/keystores/pyrmont
-  #  lighthouse --testnet pyrmont account validator import --datadir /automnt/keystores/pyrmont --directory validator_keys 
+- name: USB stick - copy auto.automnt file
+  become: yes
+  copy:
+    src: files/autofs/auto.automnt
+    dest: /etc/auto.automnt # remember to replace XXX with the UUID obtained via `lsblk -f`
+    owner: root
+    group: root
+    mode: 0600
+# To import validator_keys with lighthouse: 
+#  sudo -u lhvc -s
+#  cd /automnt/keystores/pyrmont
+#  lighthouse --testnet pyrmont account validator import --datadir /automnt/keystores/pyrmont --directory validator_keys 
 ...
 
 

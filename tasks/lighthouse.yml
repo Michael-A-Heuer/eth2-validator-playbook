@@ -72,18 +72,13 @@
 - name: Lighthouse - prepare workspace for beacon node user
   become: yes
   file:
-    path: /var/lib/lighthouse/beacon
+    path: /var/lib/lighthouse/chaindata
     state: directory
     recurse: yes
     mode: o-rwx
     owner: lhbn
     group: lhbn
 
-# NOTE: If you want to add custom graffiti for things like POAP remember to
-#       modify the command in this service file!
-#
-#       Example: --graffiti "lovepoaps"
-#
 - name: Lighthouse - install systemd service for beacon node
   become: yes
   copy:

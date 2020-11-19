@@ -1,4 +1,8 @@
 ---
+- name: Set timezone to Europe/Berlin
+  become: yes
+  shell: timedatectl set-timezone Europe/Berlin
+  
 - name: install chrony for smoother time sync
   become: yes
   apt:

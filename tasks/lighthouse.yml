@@ -87,6 +87,14 @@
     owner: root
     group: root
     mode: 0600
+- name: Lighthouse - install systemd service for testnet beacon node
+  become: yes
+  copy:
+    src: files/systemd/testnet-lighthouse-beacon-node.service
+    dest: /etc/systemd/system/testnet-lighthouse-beacon-node.service
+    owner: root
+    group: root
+    mode: 0600
 
 - name: Lighthouse - create dedicated user for validator client
   become: yes
@@ -112,6 +120,14 @@
   copy:
     src: files/systemd/lighthouse-validator-client.service
     dest: /etc/systemd/system/lighthouse-validator-client.service
+    owner: root
+    group: root
+    mode: 0600
+- name: Lighthouse - install systemd service for testnet validator client
+  become: yes
+  copy:
+    src: files/systemd/testnet-lighthouse-validator-client.service
+    dest: /etc/systemd/system/testnet-lighthouse-validator-client.service
     owner: root
     group: root
     mode: 0600

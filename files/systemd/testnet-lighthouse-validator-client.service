@@ -13,7 +13,7 @@ Restart=always
 RestartSec=10
 SyslogIdentifier=testnet-lhvc
 ExecStart=/usr/local/bin/lighthouse vc \
-    --datadir /var/lib/lighthouse \
+    --datadir /var/lib/lighthouse/validators \
     --testnet pyrmont
 
 [Install]

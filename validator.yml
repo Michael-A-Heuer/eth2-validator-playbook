@@ -72,7 +72,7 @@
     
     - import_tasks: tasks/sensors.yml
     
-    - import_tasks: tasks/chaindata-sata.yml
+    - import_tasks: tasks/sata-mount.yml
 
     - import_tasks: tasks/usb-automount.yml
     

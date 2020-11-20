@@ -9,11 +9,12 @@
   lineinfile:
     path: /etc/auto.master
     line: /automnt /etc/auto.automnt --timeout=5 --ghost
+    insertbefore: BOF
 
 - name: USB stick - copy auto.automnt file
   become: yes
   copy:
-    src: files/autofs/auto.automnt
+    src: files/usb-automount/auto.automnt
     dest: /etc/auto.automnt # remember to replace XXX with the UUID obtained via `lsblk -f`
     owner: root
     group: root

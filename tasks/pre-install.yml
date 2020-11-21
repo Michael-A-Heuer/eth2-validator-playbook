@@ -1,0 +1,40 @@
+---
+- name: update APT packages
+  become: yes
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+
+# This umask will make it so that new files will by default not be
+# accessible by other users on the system. Just to be sure, restrictive
+# UMask values are also supplied explicitly in this playbook's systemd
+# services.
+- name: set tighter umask
+  become: yes
+  lineinfile:
+    path: /etc/login.defs
+    regexp: "^UMASK"
+    line: "UMASK 077"
+
+- name: re-login
+  meta: reset_connection
+
+- name: remove global access to home directory
+  file:
+    path: "{{ ansible_user_dir }}"
+    state: directory
+    recurse: yes
+    mode: o-rwx
+
+- name: UFW - allow SSH
+  become: yes
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: UFW - turn on
+  become: yes
+  ufw:
+    state: enabled
+...

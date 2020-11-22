@@ -2,6 +2,7 @@
 # This playbook installs:
 # - Lighthouse (Eth2)
 # - Geth (Eth1)
+# - Besue (Eth1)
 # - Prometheus
 # - Grafana
 #
@@ -39,6 +40,8 @@
     - import_tasks: tasks/usb-automount.yml
     
     - import_tasks: tasks/geth.yml
+
+    - import_tasks: tasks/besu.yml
 
     - import_tasks: tasks/lighthouse.yml
 

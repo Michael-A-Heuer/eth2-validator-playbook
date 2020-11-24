@@ -1,12 +1,14 @@
 #
 # This playbook installs:
 # - Geth (Eth1)
+# - Openethereum (Eth1)
 # - Lighthouse (Eth2)
+# - Prysm (Eth2)
 # - Prometheus
 # - Grafana
 
 ---
-- name: Eth2 Validator Playbook (Mainnet)
+- name: Eth2 Validator Playbook (Mainnet and Pyrmont)
   hosts: all
 
   # By default this playbook uses the 'heuer' user, but this can be
@@ -19,8 +21,8 @@
     # Misc Pre-Install Stuff
     #
     - import_tasks: tasks/pre-install.yml
-    
-    - import_tasks: tasks/tight-umask.yml
+
+    #- import_tasks: tasks/tight-umask.yml
 
     #
     # Main Installation
@@ -47,5 +49,9 @@
     - import_tasks: tasks/lighthouse.yml
 
     - import_tasks: tasks/metrics.yml
+
+    - import_tasks: tasks/openethereum.yml
+
+    - import_tasks: tasks/prysm.yml
 
 #    - import_tasks: tasks/scripts.yml

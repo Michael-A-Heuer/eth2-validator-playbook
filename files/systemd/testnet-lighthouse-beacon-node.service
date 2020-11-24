@@ -13,10 +13,10 @@ RestartSec=5
 SyslogIdentifier=testnet-lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
     --datadir /var/lib/lighthouse/chaindata \
-#    --freezer-dir /chaindata/lighthouse/freezer_db \
+    --network pyrmont \
     --staking \
     --metrics \
-    --testnet pyrmont \
+    --target-peers 10 \
     --eth1-endpoint https://goerli.infura.io/v3/XXX
 #    --eth1-endpoint https://eth-goerli.alchemyapi.io/v2/XXX
 

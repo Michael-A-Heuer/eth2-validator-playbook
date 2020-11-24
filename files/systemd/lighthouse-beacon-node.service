@@ -15,6 +15,7 @@ SyslogIdentifier=lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
     --datadir /var/lib/lighthouse/chaindata \
     --freezer-dir /chaindata/lighthouse/freezer_db \
+    --network mainnet \
     --staking \
     --metrics \
 #    --eth1-endpoint https://mainnet.infura.io/v3/XXX

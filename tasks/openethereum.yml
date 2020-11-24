@@ -58,8 +58,8 @@
   systemd:
     daemon_reload: yes
 
-- name: UFW - allow port 9000 (Openethereum)
+- name: UFW - allow port 30303 (Openethereum)
   become: yes
   ufw:
     rule: allow
-    port: '9000'
+    port: '30303'

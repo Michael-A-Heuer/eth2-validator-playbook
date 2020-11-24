@@ -1,7 +1,8 @@
 #
 # This playbook installs:
-# - Lighthouse (Eth2)
 # - Geth (Eth1)
+# - Openethereum (Eth1)
+# - Lighthouse (Eth2)
 # - Prometheus
 # - Grafana
 #
@@ -37,11 +38,18 @@
     - import_tasks: tasks/sata-mount.yml
 
     - import_tasks: tasks/usb-automount.yml
-    
-    - import_tasks: tasks/geth.yml
 
+    #
+    # Clients Installation
+    #
+    - import_tasks: tasks/rust.yml
+
+    - import_tasks: tasks/geth.yml
+    
     - import_tasks: tasks/lighthouse.yml
 
     - import_tasks: tasks/metrics.yml
 
+    - import_tasks: tasks/openethereum.yml
+    
     - import_tasks: tasks/scripts.yml

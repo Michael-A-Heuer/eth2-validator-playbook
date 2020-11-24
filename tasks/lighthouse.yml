@@ -5,21 +5,8 @@
     pkg:
       - curl
       - git
-      - gcc
-      - g++
-      - make
-      - cmake
       - pkg-config
       - libssl-dev
-      - vim # :-)
-
-- name: Lighthouse - install rustup
-  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
-  args:
-    creates: ~/.cargo/bin/rustc
-
-- name: Lighthouse - update rust
-  shell: . ~/.profile && rustup update
 
 # NOTE: By default this will checkout from master. Modify this if you would like
 #       to checkout a specific branch or tag.

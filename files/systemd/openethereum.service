@@ -1,0 +1,24 @@
+[Unit]
+Description=Openethereum Client (ETH1)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=oeth
+Group=oeth
+UMask=0077
+Restart=always
+RestartSec=5
+SyslogIdentifier=oeth
+ExecStart=/usr/local/bin/openethereum \
+    --base-path /var/lib/openethereum \
+
+# Specifies which signal to use when killing a service. Defaults to SIGTERM.
+# SIGHUP gives openethereum time to exit cleanly before SIGKILL (default 90s)
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=default.target
+
+

@@ -1,0 +1,70 @@
+---
+- name: Teku - install java and unzip
+  become: yes
+  apt:
+    pkg:
+      - openjdk-11-jdk
+      - unzip
+    state: latest
+    update_cache: yes
+
+- name: Teku - create dedicated user
+  become: yes
+  user:
+    name: teku
+    create_home: no
+    home: /nonexistent
+    shell: /bin/false
+
+- name: Teku - prepare workspace for user
+  become: yes
+  file:
+    path: /var/lib/teku
+    state: directory
+    recurse: yes
+    mode: o-rwx
+    owner: teku
+    group: teku
+
+# NOTE: By default this will checkout from master. Modify this if you would like
+#       to checkout a specific branch or tag.
+- name: Teku - clone repository
+  git:
+    repo: 'https://github.com/ConsenSys/teku.git'
+    dest: ~/teku
+    clone: yes
+    update: yes
+
+- name: Teku - build
+  shell: . ~/.profile && ./gradlew installDist
+  args:
+    chdir: ~/teku
+
+- name: Teku - symlink
+  become: yes
+  file:
+    src: "{{ ansible_user_dir }}/teku/build/install/teku/bin/teku"
+    dest: /usr/local/bin/teku
+    state: link
+    owner: teku
+    group: teku
+
+- name: Teku - install systemd service
+  become: yes
+  copy:
+    src: files/systemd/teku.service
+    dest: /etc/systemd/system/teku.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: systemd daemon-reload
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: UFW - allow port 9000 (Teku)
+  become: yes
+  ufw:
+    rule: allow
+    port: '9000'

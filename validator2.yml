@@ -21,8 +21,10 @@
     # Misc Pre-Install Stuff
     #
     - import_tasks: tasks/pre-install.yml
-
-    #- import_tasks: tasks/tight-umask.yml
+    
+    #- import_tasks: tasks/tight-umask.yml # conflicts with besu & teku
+    
+    #- import_tasks: tasks/ups.yml
 
     #
     # Main Installation
@@ -39,6 +41,8 @@
 
     - import_tasks: tasks/usb-automount.yml
 
+    #- import_tasks: tasks/ups.yml
+
     #
     # Clients Installation
     #
@@ -50,8 +54,8 @@
 
     - import_tasks: tasks/metrics.yml
 
-    - import_tasks: tasks/openethereum.yml
+    - import_tasks: tasks/besu.yml
 
-    - import_tasks: tasks/prysm.yml
+    - import_tasks: tasks/teku.yml
 
     #- import_tasks: tasks/scripts.yml

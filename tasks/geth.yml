@@ -47,4 +47,4 @@
   become: yes
   ufw:
     rule: allow
-    port: '30303'
+    to_port: '30303'

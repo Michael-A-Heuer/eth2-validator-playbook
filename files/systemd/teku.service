@@ -13,10 +13,11 @@ Restart=always
 RestartSec=5
 Environment="JAVA_OPTS=-Xmx2g"
 SyslogIdentifier=teku
-ExecStart=/usr/local/bin/teku/bin/teku \
-	--data-beacon-path=/var/lib/teku/beacon \
-#    --data-path=/var/lib/teku/chaindata
-    --eth1-endpoint https://mainnet.infura.io/v3/XXX
+ExecStart=/usr/local/bin/teku \
+    --data-path=/var/lib/teku \
+    --network=mainnet \
+    --p2p-port=9001 \
+#    --eth1-endpoint https://mainnet.infura.io/v3/XXX
 #    --eth1-endpoint https://eth-mainnet.alchemyapi.io/v2/XXX
 
 # remember to look up infura link on https://infura.io/

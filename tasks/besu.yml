@@ -63,8 +63,8 @@
   systemd:
     daemon_reload: yes
 
-- name: UFW - allow port 30303 (Besu)
+- name: UFW - allow port 30304 (Besu)
   become: yes
   ufw:
     rule: allow
-    port: '30303'
+    to_port: '30304'

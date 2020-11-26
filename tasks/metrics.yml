@@ -239,4 +239,4 @@
   become: yes
   ufw:
     rule: allow
-    port: '3000'
+    to_port: '3000'

@@ -128,4 +128,4 @@
   become: yes
   ufw:
     rule: allow
-    port: '9000'
+    to_port: '9000'

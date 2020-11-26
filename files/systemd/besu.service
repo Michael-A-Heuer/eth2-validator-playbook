@@ -13,7 +13,8 @@ RestartSec=5
 Environment="JAVA_OPTS=-Xmx2g"
 SyslogIdentifier=besu
 ExecStart=/usr/local/bin/besu \
-    --data-path=/var/lib/besu/chaindata
+    --data-path=/var/lib/besu/chaindata \
+    --p2p-port=30304 \
 
 [Install]
 WantedBy=default.target

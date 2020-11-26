@@ -24,8 +24,8 @@
 # Pyrmont Testnet
 #  sudo -u lhvc -s
 #  cd /automnt/keystores/pyrmont
-#  lighthouse --testnet pyrmont account validator import --datadir /automnt/keystores/pyrmont --directory validator_keys 
-# lighthouse --testnet pyrmont account validator import --datadir /var/lib/lighthouse --directory validator_keys 
+#  lighthouse --network pyrmont account validator import --datadir /automnt/keystores/pyrmont --directory validator_keys 
+#  lighthouse --network pyrmont account validator import --datadir /var/lib/lighthouse --directory validator_keys 
 
 # Mainnet
 #  sudo -u lhvc -s

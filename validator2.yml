@@ -11,10 +11,10 @@
 - name: Eth2 Validator Playbook (Mainnet and Pyrmont)
   hosts: all
 
-  # By default this playbook uses the 'heuer' user, but this can be
+  # By default this playbook uses the 'ubuntu' user, but this can be
   # overwritten with the PLAYBOOK_USER environment variable. This user needs
   # sudo access on the remote system.
-  user: "{{ lookup('env', 'PLAYBOOK_USER') | default('heuer') }}"
+  user: "{{ lookup('env', 'PLAYBOOK_USER') | default('ubuntu') }}"
 
   tasks:
     #

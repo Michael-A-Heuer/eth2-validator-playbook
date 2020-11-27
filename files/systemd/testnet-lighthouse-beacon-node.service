@@ -19,8 +19,7 @@ ExecStart=/usr/local/bin/lighthouse bn \
     --target-peers 10 \
     --port 9002 \
     --eth1-blocks-per-log-query 100 \
-    --eth1-endpoint https://goerli.infura.io/v3/XXX
-#    --eth1-endpoint https://eth-goerli.alchemyapi.io/v2/XXX
+    --eth1-endpoints https://goerli.infura.io/v3/XXX,https://eth-goerli.alchemyapi.io/v2/XXX
 
 # remember to look up infura link on https://infura.io/
 # remember to look up alchemy link on https://dashboard.alchemyapi.io/login

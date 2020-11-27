@@ -18,8 +18,7 @@ ExecStart=/usr/local/bin/lighthouse bn \
     --network mainnet \
     --staking \
     --metrics \
-#    --eth1-endpoint https://mainnet.infura.io/v3/XXX
-#    --eth1-endpoint https://eth-mainnet.alchemyapi.io/v2/XXX
+    --eth1-endpoints http://127.0.0.1:8545,https://mainnet.infura.io/v3/XXX,https://eth-mainnet.alchemyapi.io/v2/XXX
 
 # remember to look up infura link on https://infura.io/
 # remember to look up alchemy link on https://dashboard.alchemyapi.io/login

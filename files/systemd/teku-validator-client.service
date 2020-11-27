@@ -13,9 +13,10 @@ Restart=always
 RestartSec=10
 SyslogIdentifier=lhvc
 ExecStart=/usr/local/bin/teku vc \
+    --log-file=/var/lib/teku/validator/teku-validator.logs \
     --data-path=/var/lib/teku \
     --validator-keys="/automnt/keystores/teku/mainnet:/automnt/keystores/teku/mainnet" \
-	--network=mainnet \
+    --network=mainnet \
 
 [Install]
 WantedBy=multi-user.target

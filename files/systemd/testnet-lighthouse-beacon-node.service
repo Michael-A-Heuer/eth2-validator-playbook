@@ -18,6 +18,7 @@ ExecStart=/usr/local/bin/lighthouse bn \
     --metrics \
     --target-peers 10 \
     --port 9002 \
+    --eth1-blocks-per-log-query 100 \
     --eth1-endpoint https://goerli.infura.io/v3/XXX
 #    --eth1-endpoint https://eth-goerli.alchemyapi.io/v2/XXX
 

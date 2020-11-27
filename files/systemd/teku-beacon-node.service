@@ -6,15 +6,15 @@ After=network-online.target besu.service
 
 [Service]
 Type=simple
-User=teku
-Group=teku
+User=tkbn
+Group=tkbn
 UMask=0077
 Restart=always
 RestartSec=5
-Environment="JAVA_OPTS=-Xmx2g"
-SyslogIdentifier=teku
+SyslogIdentifier=tkbn
 ExecStart=/usr/local/bin/teku \
-    --data-path=/var/lib/teku \
+    --data-beacon-path=/var/lib/teku/beacon \
+    --log-file=/var/lib/teku/beacon/teku-beacon.logs \
     --network=mainnet \
     --p2p-port=9001 \
 #    --eth1-endpoint https://mainnet.infura.io/v3/XXX

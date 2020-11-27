@@ -1,7 +1,7 @@
 [Unit]
 Description=Lighthouse Beacon Node (ETH2)
 Wants=network-online.target
-Requires=geth.service
+#Requires=geth.service
 After=network-online.target geth.service
 
 [Service]

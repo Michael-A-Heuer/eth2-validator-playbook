@@ -17,6 +17,7 @@ ExecStart=/usr/local/bin/teku \
     --log-file=/var/lib/teku/beacon/teku-beacon.logs \
     --network=mainnet \
     --p2p-port=9001 \
+    --p2p-peer-upper-bound 10 \
 #    --eth1-endpoint https://mainnet.infura.io/v3/XXX
 #    --eth1-endpoint https://eth-mainnet.alchemyapi.io/v2/XXX
 

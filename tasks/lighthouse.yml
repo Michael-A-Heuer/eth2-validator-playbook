@@ -59,7 +59,7 @@
 - name: Lighthouse - prepare workspace for beacon node user
   become: yes
   file:
-    path: /var/lib/lighthouse/chaindata
+    path: /var/lib/lighthouse/beacon
     state: directory
     recurse: yes
     mode: o-rwx

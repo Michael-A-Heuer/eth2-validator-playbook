@@ -13,7 +13,7 @@ Restart=always
 RestartSec=5
 SyslogIdentifier=lhbn
 ExecStart=/usr/local/bin/lighthouse bn \
-    --datadir /var/lib/lighthouse/chaindata \
+    --datadir /var/lib/lighthouse/beacon \
     --freezer-dir /chaindata/lighthouse/freezer_db \
     --network mainnet \
     --staking \

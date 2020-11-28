@@ -55,5 +55,3 @@
     - import_tasks: tasks/besu.yml
 
     - import_tasks: tasks/teku.yml
-
-    #- import_tasks: tasks/scripts.yml

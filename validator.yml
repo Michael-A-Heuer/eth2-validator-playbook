@@ -47,5 +47,3 @@
     - import_tasks: tasks/lighthouse.yml
 
     - import_tasks: tasks/metrics.yml
-
-    #- import_tasks: tasks/scripts.yml

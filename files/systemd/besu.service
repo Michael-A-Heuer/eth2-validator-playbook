@@ -14,6 +14,7 @@ SyslogIdentifier=besu
 ExecStart=/usr/local/bin/besu \
     --data-path=/var/lib/besu/chaindata \
     --p2p-port=30304 \
+    --sync-mode=FAST \
     --pruning-enabled=true \
     --max-peers=10
 

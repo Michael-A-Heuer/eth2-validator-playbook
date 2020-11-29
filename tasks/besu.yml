@@ -1,0 +1,70 @@
+---
+- name: Besu - install java and unzip
+  become: yes
+  apt:
+    pkg:
+      - openjdk-11-jdk
+      - unzip
+    state: latest
+    update_cache: yes
+
+- name: Besu - create dedicated user
+  become: yes
+  user:
+    name: besu
+    create_home: no
+    home: /nonexistent
+    shell: /bin/false
+
+- name: Besu - prepare workspace for user
+  become: yes
+  file:
+    path: /var/lib/besu
+    state: directory
+    recurse: yes
+    mode: o-rwx
+    owner: besu
+    group: besu
+
+# NOTE: By default this will checkout from master. Modify this if you would like
+#       to checkout a specific branch or tag.
+- name: Besu - clone repository
+  git:
+    repo: 'https://github.com/hyperledger/besu.git'
+    dest: ~/besu
+    clone: yes
+    update: yes
+
+- name: Besu - build
+  shell: . ~/.profile && ./gradlew installDist
+  args:
+    chdir: ~/besu
+
+- name: Besu - symlink
+  become: yes
+  file:
+    src: "{{ ansible_user_dir }}/besu/build/install/besu/bin/besu"
+    dest: /usr/local/bin/besu
+    state: link
+    owner: root
+    group: root
+
+- name: Besu - install systemd service
+  become: yes
+  copy:
+    src: files/systemd/besu.service
+    dest: /etc/systemd/system/besu.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: systemd daemon-reload
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: UFW - allow port 30304 (Besu)
+  become: yes
+  ufw:
+    rule: allow
+    to_port: '30304'

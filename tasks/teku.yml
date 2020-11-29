@@ -1,0 +1,114 @@
+---
+- name: Teku - install java and unzip
+  become: yes
+  apt:
+    pkg:
+      - openjdk-11-jdk
+      - unzip
+    state: latest
+    update_cache: yes
+
+# NOTE: By default this will checkout from master. Modify this if you would like
+#       to checkout a specific branch or tag.
+- name: Teku - clone repository
+  git:
+    repo: 'https://github.com/ConsenSys/teku.git'
+    dest: ~/teku
+    clone: yes
+    update: yes
+
+- name: Teku - build
+  shell: . ~/.profile && ./gradlew installDist
+  args:
+    chdir: ~/teku
+
+- name: Teku - symlink
+  become: yes
+  file:
+    src: "{{ ansible_user_dir }}/teku/build/install/teku/bin/teku"
+    dest: /usr/local/bin/teku
+    state: link
+    owner: root
+    group: root
+
+- name: Teku - create common user group
+  become: yes
+  group:
+    name: teku
+    state: present
+
+- name: Teku - create data directory
+  become: yes
+  file:
+    path: /var/lib/teku
+    state: directory
+    mode: 'u=rwx,g=rx'
+    owner: root
+    group: teku
+
+- name: Teku - create dedicated user for beacon node
+  become: yes
+  user:
+    name: tkbn
+    create_home: no
+    home: /nonexistent
+    shell: /bin/false
+    groups: teku
+
+- name: Teku - prepare workspace for beacon node user
+  become: yes
+  file:
+    path: /var/lib/teku/beacon
+    state: directory
+    recurse: yes
+    mode: o-rwx
+    owner: tkbn
+    group: tkbn
+
+- name: Teku - install systemd service for beacon node
+  become: yes
+  copy:
+    src: files/systemd/teku-beacon-node.service
+    dest: /etc/systemd/system/teku-beacon-node.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Teku - create dedicated user for validator client
+  become: yes
+  user:
+    name: tkvc
+    create_home: no
+    home: /nonexistent
+    shell: /bin/false
+    groups: teku
+
+- name: Teku - prepare workspace for validator client user
+  become: yes
+  file:
+    path: /var/lib/teku/validator
+    state: directory
+    recurse: yes
+    mode: o-rwx
+    owner: tkvc
+    group: tkvc
+
+- name: Teku - install systemd service for validator client
+  become: yes
+  copy:
+    src: files/systemd/teku-validator-client.service
+    dest: /etc/systemd/system/teku-validator-client.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: systemd daemon-reload
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: UFW - allow port 9001 (Teku)
+  become: yes
+  ufw:
+    rule: allow
+    to_port: '9001'

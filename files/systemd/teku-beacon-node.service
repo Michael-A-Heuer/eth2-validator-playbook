@@ -1,0 +1,28 @@
+[Unit]
+Description=Teku Beacon Node (ETH2)
+Wants=network-online.target
+Requires=besu.service
+After=network-online.target besu.service
+
+[Service]
+Type=simple
+User=tkbn
+Group=tkbn
+UMask=0077
+Restart=always
+RestartSec=5
+SyslogIdentifier=tkbn
+ExecStart=/usr/local/bin/teku \
+    --data-beacon-path=/var/lib/teku/beacon \
+    --log-file=/var/lib/teku/beacon/teku-beacon.logs \
+    --network=mainnet \
+    --p2p-port=9001 \
+    --p2p-peer-upper-bound 10 \
+#    --eth1-endpoint https://mainnet.infura.io/v3/XXX
+#    --eth1-endpoint https://eth-mainnet.alchemyapi.io/v2/XXX
+
+# remember to look up infura link on https://infura.io/
+# remember to look up alchemy link on https://dashboard.alchemyapi.io/login
+
+[Install]
+WantedBy=multi-user.target

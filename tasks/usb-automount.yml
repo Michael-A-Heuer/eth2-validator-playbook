@@ -1,0 +1,33 @@
+---
+- name: USB stick - install autofs package
+  become: yes
+  apt:
+    pkg: autofs
+
+- name: USB stick - add line to master file
+  become: yes
+  lineinfile:
+    path: /etc/auto.master
+    line: /automnt/keystores /etc/auto.automnt --timeout=5 --ghost
+    insertbefore: BOF
+
+- name: USB stick - copy auto.automnt file
+  become: yes
+  copy:
+    src: files/usb-automount/auto.automnt
+    dest: /etc/auto.automnt # remember to replace XXX with the UUID obtained via `lsblk -f`
+    owner: root
+    group: root
+    mode: 0600
+
+# Importing keys:
+# Pyrmont Testnet
+#  sudo -u lhvc -s
+#  cd /automnt/keystores/pyrmont
+#  lighthouse --network pyrmont account validator import --datadir /automnt/keystores/pyrmont/lighthouse --directory validator_keys 
+
+# Mainnet
+#  sudo -u lhvc -s
+#  cd /automnt/keystores/mainnet
+#  lighthouse --network mainnet account validator import --datadir /automnt/keystores/mainnet/lighthouse --directory validator_keys 
+...

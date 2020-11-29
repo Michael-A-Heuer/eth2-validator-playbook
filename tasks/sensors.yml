@@ -1,0 +1,12 @@
+---
+- name: install packages for system monitoring
+  become: yes
+  apt:
+    pkg:
+      - lm-sensors # general sensors
+      - nvme-cli # SSD temperature
+
+- name: detect available sensors
+  become: yes
+  shell: (while :; do echo ""; done ) | sensors-detect # use defaults everywhere
+...

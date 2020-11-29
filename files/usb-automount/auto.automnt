@@ -1,0 +1,2 @@
+mainnet -fstype=ext4 :/dev/disk/by-uuid/XXX
+pyrmont -fstype=ext4 :/dev/disk/by-uuid/XXX

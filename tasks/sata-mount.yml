@@ -1,0 +1,7 @@
+---
+- name: Automount the SATA - add line to fstab
+  become: yes
+  lineinfile:
+    path: /etc/fstab
+    line: /dev/disk/by-uuid/XXX /chaindata ext4 defaults 0 0 # remember to replace XXX with the UUID obtained via `lsblk -f`
+...

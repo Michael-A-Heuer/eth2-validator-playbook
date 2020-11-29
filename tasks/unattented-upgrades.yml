@@ -1,0 +1,13 @@
+---
+- name: Unattended-upgrades - install APT package
+
+  become: yes
+  apt:
+    pkg: unattended-upgrades
+
+- name: Replace the content of my file
+  become: yes
+  copy:
+    src: files/unattended-upgrades/20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+...

@@ -1,0 +1,19 @@
+---
+- name: Rust - install APT build dependencies
+  become: yes
+  apt:
+    pkg:
+      - curl
+      - gcc
+      - g++
+      - make
+      - cmake
+      - pkg-config
+
+- name: Rust - install rustup
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+  args:
+    creates: ~/.cargo/bin/rustc
+
+- name: Rust - update rust
+  shell: . ~/.profile && rustup update

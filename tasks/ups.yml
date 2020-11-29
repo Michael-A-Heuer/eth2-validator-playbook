@@ -1,0 +1,58 @@
+---
+---
+- name: Lighthouse - install APT build dependencies
+  become: yes
+  apt: 
+    name: nut
+#- name: UPS - Create a Directory for IPP
+#  become: yes
+#  file:
+#    path: "{{ ansible_user_dir }}/intelligentPowerProtector/"
+#    state: directory
+#    mode: 0755
+#    owner: heuer
+#    group: heuer
+#- name: UPS - Download Intelligent Power Protector 1.67 
+#  become: yes
+#  get_url:
+#    url: http://powerquality.eaton.de/Support/Software-Drivers/Downloads/IPS/ipp-linux_1.67.162-1_amd64.deb
+#    dest: "{{ ansible_user_dir }}/intelligentPowerProtector/"
+#    #mode: 0755
+#    group: heuer
+#    owner: heuer
+- name: Install a .deb package
+  become: yes
+  apt:
+    deb: "{{ ansible_user_dir }}/intelligentPowerProtector/ipp-linux_1.67.162-1_amd64.deb"
+...
+
+/usr/local/Eaton/IntelligentPowerProtector/Eaton-IPP
+
+/usr/local/Eaton/IntelligentPowerProtector
+
+
+
+https://srackham.wordpress.com/2013/02/27/configuring-nut-for-the-eaton-3s-ups-on-ubuntu-linux/
+
+sudo apt-get install nut
+
+
+sudo nano /etc/nut/nut.conf
+MODE=standalone
+
+
+sudo nano /etc/nut/ups.conf
+
+[eaton3s]
+driver=usbhid-ups
+port=auto
+desc="eaton3s"
+
+!!!!! 
+
+https://wiki.ipfire.org/addons/nut
+
+!!!
+http://www.bernaerts-nicolas.fr/linux/75-debian/335-debian-wheezy-install-monitor-eaton-ups
+
+

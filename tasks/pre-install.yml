@@ -1,0 +1,27 @@
+---
+- name: update APT packages
+  become: yes
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+
+- name: UFW - allow SSH
+  become: yes
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: UFW - allow UPnP on router
+  become: yes
+  ufw:
+    rule: allow
+    from_ip: '192.168.178.1'
+    from_port: '1900'
+    proto : 'udp'
+
+- name: UFW - turn on
+  become: yes
+  ufw:
+    state: enabled
+...

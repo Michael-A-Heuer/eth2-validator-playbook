@@ -1,0 +1,20 @@
+---
+# Harden the root account
+- name: Grub - disable the discovery root terminal in Grub2 
+  become: yes
+  lineinfile:
+    path: /etc/default/grub
+    regexp: "^GRUB_DISABLE_RECOVERY"
+    line: 'GRUB_DISABLE_RECOVERY="true"'
+
+- name: Grub - disable infinite waiting time in grub menu after system failure
+  become: yes
+  lineinfile:
+    path: /etc/default/grub
+    regexp: "^GRUB_RECORDFAIL_TIMEOUT"
+    line: "GRUB_RECORDFAIL_TIMEOUT=10" # choose default after 10 seconds
+
+- name: Grub - update to apply changes
+  become: yes
+  shell: update-grub
+...

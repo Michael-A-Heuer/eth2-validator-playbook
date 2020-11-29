@@ -1,0 +1,20 @@
+[Unit]
+Description=Testnet Lighthouse Validator Client (ETH2)
+Wants=network-online.target
+Requires=testnet-lighthouse-beacon-node.service
+After=network-online.target testnet-lighthouse-beacon-node.service
+
+[Service]
+Type=simple
+User=lhvc
+Group=lhvc
+UMask=0077
+Restart=always
+RestartSec=10
+SyslogIdentifier=testnet-lhvc
+ExecStart=/usr/local/bin/lighthouse vc \
+    --datadir /automnt/keystores/pyrmont/lighthouse \
+    --network pyrmont \
+
+[Install]
+WantedBy=multi-user.target

@@ -2,11 +2,13 @@
 # This playbook installs:
 # - Geth (Eth1)
 # - Lighthouse (Eth2)
+# - Besu (Eth1)
+# - Teku (Eth2)
 # - Prometheus
 # - Grafana
 
 ---
-- name: Eth2 Validator Playbook (Mainnet)
+- name: Eth2 Validator Playbook (Mainnet and Pyrmont)
   hosts: all
 
   # By default this playbook uses the 'ubuntu' user, but this can be
@@ -20,7 +22,7 @@
     #
     - import_tasks: tasks/pre-install.yml
     
-    - import_tasks: tasks/tight-umask.yml
+    #- import_tasks: tasks/tight-umask.yml # conflicts with besu & teku
 
     #
     # Main Installation
@@ -37,6 +39,8 @@
 
     - import_tasks: tasks/usb-automount.yml
 
+    #- import_tasks: tasks/ups.yml
+
     #
     # Clients Installation
     #
@@ -47,3 +51,7 @@
     - import_tasks: tasks/lighthouse.yml
 
     - import_tasks: tasks/metrics.yml
+
+    - import_tasks: tasks/besu.yml
+
+    - import_tasks: tasks/teku.yml

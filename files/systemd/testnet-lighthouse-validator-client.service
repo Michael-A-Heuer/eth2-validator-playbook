@@ -13,7 +13,7 @@ Restart=always
 RestartSec=10
 SyslogIdentifier=testnet-lhvc
 ExecStart=/usr/local/bin/lighthouse vc \
-    --datadir /var/lib/lighthouse \
+    --datadir /automnt/keystores/pyrmont/lighthouse \
     --network pyrmont \
 
 [Install]

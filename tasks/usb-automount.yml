@@ -8,7 +8,7 @@
   become: yes
   lineinfile:
     path: /etc/auto.master
-    line: /automnt /etc/auto.automnt --timeout=5 --ghost
+    line: /automnt/keystores /etc/auto.automnt --timeout=5 --ghost
     insertbefore: BOF
 
 - name: USB stick - copy auto.automnt file
@@ -24,11 +24,10 @@
 # Pyrmont Testnet
 #  sudo -u lhvc -s
 #  cd /automnt/keystores/pyrmont
-#  lighthouse --network pyrmont account validator import --datadir /automnt/keystores/lighthouse/pyrmont --directory validator_keys 
-#  lighthouse --network pyrmont account validator import --datadir /var/lib/lighthouse --directory validator_keys 
+#  lighthouse --network pyrmont account validator import --datadir /automnt/keystores/pyrmont/lighthouse --directory validator_keys 
 
 # Mainnet
 #  sudo -u lhvc -s
 #  cd /automnt/keystores/mainnet
-#  lighthouse --network mainnet account validator import --datadir /automnt/keystores/lighthouse/mainnet --directory validator_keys 
+#  lighthouse --network mainnet account validator import --datadir /automnt/keystores/mainnet/lighthouse --directory validator_keys 
 ...

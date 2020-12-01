@@ -13,6 +13,11 @@ UMask=0077
 Restart=always
 RestartSec=10
 SyslogIdentifier=lhvc
+
+# Wait more than 2 epochs (13 minutes, 780 seconds) befor starting the validator client to prevent accidental double voting after client switch.
+ExecStartPre=/bin/sleep 780
+TimeoutStartSec=900
+
 ExecStart=/usr/local/bin/lighthouse vc \
     --datadir /automnt/keystores/mainnet/lighthouse
 

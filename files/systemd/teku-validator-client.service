@@ -2,6 +2,7 @@
 Description=Teku Validator Client (ETH2)
 Wants=network-online.target
 Requires=teku-beacon-node.service
+Conflicts=lighthouse-validator-client.service
 After=network-online.target teku-beacon-node.service
 
 [Service]
@@ -17,6 +18,8 @@ ExecStart=/usr/local/bin/teku vc \
     --data-path=/var/lib/teku \
     --validator-keys="/automnt/keystores/mainnet/teku:/automnt/keystores/mainnet/teku" \
     --network=mainnet \
+
+# CAUTION! Make sure no other mainnet validator is running in parallel.
 
 [Install]
 WantedBy=multi-user.target

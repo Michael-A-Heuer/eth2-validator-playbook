@@ -2,6 +2,7 @@
 Description=Lighthouse Validator Client (ETH2)
 Wants=network-online.target
 Requires=lighthouse-beacon-node.service
+Conflicts=teku-validator-client.service
 After=network-online.target lighthouse-beacon-node.service
 
 [Service]
@@ -14,6 +15,8 @@ RestartSec=10
 SyslogIdentifier=lhvc
 ExecStart=/usr/local/bin/lighthouse vc \
     --datadir /automnt/keystores/mainnet/lighthouse
+
+# CAUTION! Make sure no other mainnet validator is running in parallel.
 
 [Install]
 WantedBy=multi-user.target

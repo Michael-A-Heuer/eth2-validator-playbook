@@ -14,7 +14,7 @@ RestartSec=5
 SyslogIdentifier=tkbn
 ExecStart=/usr/local/bin/teku \
     --data-beacon-path=/var/lib/teku/beacon \
-    --log-file=/var/lib/teku/beacon/teku-beacon.logs \
+    --log-destination=CONSOLE \
     --network=mainnet \
     --p2p-port=9001 \
     --p2p-peer-upper-bound 10 \

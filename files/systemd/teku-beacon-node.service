@@ -11,6 +11,7 @@ Group=tkbn
 UMask=0077
 Restart=always
 RestartSec=5
+SuccessExitStatus=143
 SyslogIdentifier=tkbn
 ExecStart=/usr/local/bin/teku \
     --data-beacon-path=/var/lib/teku/beacon \

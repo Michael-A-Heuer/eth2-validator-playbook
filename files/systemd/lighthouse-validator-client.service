@@ -19,6 +19,7 @@ ExecStartPre=/bin/sleep 780
 TimeoutStartSec=900
 
 ExecStart=/usr/local/bin/lighthouse vc \
+    --graffiti "POAP GOES HERE" \
     --datadir /automnt/keystores/mainnet/lighthouse
 
 # CAUTION! Make sure no other mainnet validator is running in parallel.
